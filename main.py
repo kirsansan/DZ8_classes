@@ -30,6 +30,11 @@ def print_statistics(list_quest: list[Questions:]):
 def create_list_of_questions_from_long_data(some_data_from_json) -> list[Questions:] :
     """read from_long_data and fill objects like class Questions then append it to the list
     this list will be returned
+    BIG COMMENT String for test docstrings
+    I want to see information like:
+    'a' is answer
+    'd' is dificult level
+    'q' is question
     """
     questions = []
     for tmp_data in some_data_from_json:
@@ -62,7 +67,7 @@ if __name__ == '__main__':
 
     # easy game of not - let it user choose
     while True:
-        input_and_check.input_while_correct("Do you want to play in Nightmare mode? 1 - Yes, 2 - No")
+        input_and_check.input_while_correct("Do you want to play in Nightmare mode? 1 - Yes, 2 - No >")
         if Checker.verify_string_correct(input_and_check.input_string, "12"):
             if input_and_check.input_string == '1':
                 night_mare_mode = True
