@@ -67,9 +67,12 @@ class Questions():
             return True
         return False
 
-    def build_question(self) ->str:
+    def build_question(self, mode_nightmare:bool=False) ->str:
         """ build string for preparing request the answer"""
-        tmp_str = self.question_str + " Сложность:" + f"{self.dificulty_num}"
+        if mode_nightmare:
+            tmp_str = self.make_magic_spoil(self.question_str) + " Сложность:" + f"{self.dificulty_num}"
+        else:
+            tmp_str = self.question_str + " Сложность:" + f"{self.dificulty_num}"
         return tmp_str
 
     def build_feedback(self):

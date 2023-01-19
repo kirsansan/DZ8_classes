@@ -23,13 +23,14 @@ class InputAndCheckString:
             self.is_empty = False
             return False
 
-    def verify_correct(self) -> bool:
+    def verify_correct(self, accesible=" .-") -> bool:
         """check for something characteristic of string. for instance including only dots and minuses
         we will check and letter in string and if we will find anything else
         except minuses, spaces and dots  then we will return with False result
         """
-        for letter in self.input_string:
-            if letter not in ". -":
+        #for letter in self.input_string:
+        #    if letter not in ". -":
+        if not Checker.verify_string_correct(self.input_string, accesible):
                 self.is_correct = False
                 return False
         self.is_correct = True
@@ -57,6 +58,19 @@ class InputAndCheckString:
             print(in_comment)
             self.input_string = input()
             self.verify_empty()  # it can change is_empty flag
+
+class Checker:
+    def verify_string_correct(string_for_test:str="", accepted_letters:str="") -> bool:
+        """check for something characteristic of string. for instance including only dots and minuses
+        we will check and letter in string and if we will find anything else
+        except minuses, spaces and dots  then we will return with False result
+        """
+        for letter in string_for_test:
+            if letter not in accepted_letters:
+                #self.is_correct = False
+                return False
+        #self.is_correct = True
+        return True
 
 
 # Block for self-testing

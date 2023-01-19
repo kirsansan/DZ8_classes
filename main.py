@@ -3,7 +3,7 @@
 # writted by Kirill.S
 
 from config.config import FILE_FOR_QUESTIONS, SCORE_FOR_RIGHT
-from my_new_input.my_input import InputAndCheckString
+from my_new_input.my_input import InputAndCheckString, Checker
 from questions.questions import Questions
 from jdata.utils import load_from_json_file
 from pprint import pprint
@@ -52,20 +52,30 @@ if __name__ == '__main__':
     # create Question object's elements and fill some list of them
     questions: list[Questions:] = create_list_of_questions_from_long_data(not_seeking_data)
 
-    # dialog with user block
-    input_and_check: InputAndCheckString = InputAndCheckString()   # my class for fialog
-
     # create shuffle list with numbers of questions
     prepare_to_shuffle: list[int] = []
     [prepare_to_shuffle.append(i) for i in range(0, len(questions))]
     random.shuffle(prepare_to_shuffle)
+
+    # dialog with user block
+    input_and_check: InputAndCheckString = InputAndCheckString()   # my class for fialog
+
+    # easy game of not - let it user choose
+    while True:
+        input_and_check.input_while_correct("Do you want to play in Nightmare mode? 1 - Yes, 2 - No")
+        if Checker.verify_string_correct(input_and_check.input_string, "12"):
+            if input_and_check.input_string == '1':
+                night_mare_mode = True
+            else:
+                night_mare_mode = False
+            break
 
     # let's test our user
     for item in prepare_to_shuffle:
     #for tmp_question in questions: # if we need to go with use unshuffled steps
         tmp_question = questions[item]
         print("А ну ко угадай ко")
-        print(tmp_question.build_question())
+        print(tmp_question.build_question(night_mare_mode))
         input_and_check.input_while_correct(">")
         # if input_and_check.input_string == tmp_question.right_answer_str:
         tmp_question.user_answer = input_and_check.input_string  # need rewrite as set_answer() and get_answer()
