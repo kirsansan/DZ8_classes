@@ -7,6 +7,7 @@ from my_new_input.my_input import InputAndCheckString
 from questions.questions import Questions
 from jdata.utils import load_from_json_file
 from pprint import pprint
+import random
 
 def print_statistics(list_quest: list[Questions:]):
     """ calculate statistics and print it
@@ -45,14 +46,24 @@ def create_list_of_questions_from_long_data(some_data_from_json) -> list[Questio
 if __name__ == '__main__':
 
     print("Ok")
+    # take information from the file
     not_seeking_data = load_from_json_file(FILE_FOR_QUESTIONS)
 
+    # create Question object's elements and fill some list of them
     questions: list[Questions:] = create_list_of_questions_from_long_data(not_seeking_data)
 
     # dialog with user block
-    input_and_check: InputAndCheckString = InputAndCheckString()
+    input_and_check: InputAndCheckString = InputAndCheckString()   # my class for fialog
 
-    for tmp_question in questions:
+    # create shuffle list with numbers of questions
+    prepare_to_shuffle: list[int] = []
+    [prepare_to_shuffle.append(i) for i in range(0, len(questions))]
+    random.shuffle(prepare_to_shuffle)
+
+    # let's test our user
+    for item in prepare_to_shuffle:
+    #for tmp_question in questions: # if we need to go with use unshuffled steps
+        tmp_question = questions[item]
         print("А ну ко угадай ко")
         print(tmp_question.build_question())
         input_and_check.input_while_correct(">")
