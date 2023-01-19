@@ -33,10 +33,10 @@ class Questions():
         return self.__is_it_real
 
     def get_question_hint(self) -> str:
+        """ this func return spoiling question """
         # print("I know question:")
-        self.question_str = self.make_magic_spoil(self.question_str)
-        return self.question_str
-
+        return self.make_magic_spoil(self.question_str)
+        # return self.question_str
 
     def get_answer_hint(self) -> str:
         # print("I know answer to your question:")
@@ -44,6 +44,7 @@ class Questions():
 
     @classmethod
     def make_magic_spoil(cls, some_string:str, spoil_number:int=5) ->str:
+        """ func for a joke - change some letters in the string to the * """
         # self.question_sting = "".join([x for x in self.question_sting if x == 'a'])
         hard_str: str = ""
         for index in range(0,len(some_string)):
@@ -54,18 +55,25 @@ class Questions():
         return hard_str
 
     def get_points(self) -> int:
+        """ only for .score_for_right return"""
         return self.score_for_right
 
     def is_correct(self) ->bool:
+        """ compare user_answer with right_answer and return boolean
+            if this func started - it means that user has already answered (one or more times)
+        """
         self.has_answer_requested = True
         if self.user_answer == self.right_answer_str:
             return True
+        return False
 
     def build_question(self) ->str:
+        """ build string for preparing request the answer"""
         tmp_str = self.question_str + " Сложность:" + f"{self.dificulty_num}"
         return tmp_str
 
     def build_feedback(self):
+        """react for answer. it would use is_correct()"""
         if self.is_correct():
             return f"Ответ верный, получено {self.score_for_right} баллов\n"
         else:

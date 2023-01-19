@@ -57,7 +57,7 @@ if __name__ == '__main__':
         print(tmp_question.build_question())
         input_and_check.input_while_correct(">")
         # if input_and_check.input_string == tmp_question.right_answer_str:
-        tmp_question.user_answer = input_and_check.input_string  # need rewrite as set_answer()
+        tmp_question.user_answer = input_and_check.input_string  # need rewrite as set_answer() and get_answer()
         # tmp_question.is_correct()
         print(tmp_question.build_feedback())
 
@@ -68,4 +68,4 @@ if __name__ == '__main__':
     else:
         print("Если вы проверяете этот код - помогите мне получить доступ к урокам с 10 по 13!!")
 
-# this is end of this short history
+# this is the end of this short history
