@@ -50,7 +50,7 @@ def create_list_of_questions_from_long_data(some_data_from_json) -> list[Questio
 # main block
 if __name__ == '__main__':
 
-    print("Ok")
+    print("Ok.")
     # take information from the file
     not_seeking_data = load_from_json_file(FILE_FOR_QUESTIONS)
 
