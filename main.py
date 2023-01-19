@@ -82,9 +82,7 @@ if __name__ == '__main__':
         print("А ну ко угадай ко")
         print(tmp_question.build_question(night_mare_mode))
         input_and_check.input_while_correct(">")
-        # if input_and_check.input_string == tmp_question.right_answer_str:
         tmp_question.user_answer = input_and_check.input_string  # need rewrite as set_answer() and get_answer()
-        # tmp_question.is_correct()
         print(tmp_question.build_feedback())
 
     # print statistics block -
