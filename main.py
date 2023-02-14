@@ -1,6 +1,6 @@
 # This is a not_very_simple Python script. ;-)
 # HomeWork from lesson 8.2. Python 20 groupe
-# writted by Kirill.S
+# written by Kirill.S
 
 from config.config import FILE_FOR_QUESTIONS, SCORE_FOR_RIGHT
 from my_new_input.my_input import InputAndCheckString, Checker
@@ -30,11 +30,12 @@ def print_statistics(list_quest: list[Questions:]):
 def create_list_of_questions_from_long_data(some_data_from_json) -> list[Questions:] :
     """read from_long_data and fill objects like class Questions then append it to the list
     this list will be returned
-    BIG COMMENT String for test docstrings
-    I want to see information like:
-    'a' is answer
-    'd' is dificult level
-    'q' is question
+    in loaded data \n
+    'a' is answer \n
+    'd' is dificult level \n
+    'q' is question \n
+    :param some_data_from_json: some data which load from json format
+    :return: list of Questions
     """
     questions = []
     for tmp_data in some_data_from_json:
@@ -47,10 +48,10 @@ def create_list_of_questions_from_long_data(some_data_from_json) -> list[Questio
     return questions
 
 
-# main block
-if __name__ == '__main__':
 
+def main():
     print("Ok.")
+
     # take information from the file
     not_seeking_data = load_from_json_file(FILE_FOR_QUESTIONS)
 
@@ -63,9 +64,9 @@ if __name__ == '__main__':
     random.shuffle(prepare_to_shuffle)
 
     # dialog with user block
-    input_and_check: InputAndCheckString = InputAndCheckString()   # my class for fialog
+    input_and_check: InputAndCheckString = InputAndCheckString()   # my class for dialog
 
-    # easy game of not - let it user choose
+    # easy game or not - let it user choose
     while True:
         input_and_check.input_while_correct("Do you want to play in Nightmare mode? 1 - Yes, 2 - No >")
         if Checker.verify_string_correct(input_and_check.input_string, "12"):
@@ -90,6 +91,12 @@ if __name__ == '__main__':
     if True:
         print("Приятно поиграли ")
     else:
-        print("Если вы проверяете этот код - помогите мне получить доступ к урокам с 10 по 13!!")
+        print("знаю что через куратора, но если есть возможность "
+              "- мне бы хотя бы почитать задания уроков 10 по 16!!")
 
 # this is the end of this short history
+
+
+# main block
+if __name__ == '__main__':
+    main()

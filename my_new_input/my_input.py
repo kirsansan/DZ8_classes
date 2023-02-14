@@ -3,10 +3,6 @@
 
 class InputAndCheckString:
 
-    input_string: str = ""
-    is_correct: bool = False
-    is_empty: bool = True
-
     def __init__(self, input_string: str = ""):
         self.input_string = input_string
         self.is_correct = False
@@ -60,6 +56,7 @@ class InputAndCheckString:
             self.verify_empty()  # it can change is_empty flag
 
 class Checker:
+    @staticmethod
     def verify_string_correct(string_for_test:str="", accepted_letters:str="") -> bool:
         """check for something characteristic of string. for instance including only dots and minuses
         we will check and letter in string and if we will find anything else
@@ -72,11 +69,14 @@ class Checker:
         #self.is_correct = True
         return True
 
-
-# Block for self-testing
-if __name__ == '__main__':
+def test():
     test_input_string = InputAndCheckString("....1234")
     print(test_input_string.verify_correct())  # wait for False
 
     test_input_string.input_string = "   .- -- . "
     print(test_input_string.verify_correct())  # wait for True
+
+
+# Block for self-testing
+if __name__ == '__main__':
+    test()
